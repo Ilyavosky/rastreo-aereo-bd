@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:${POSTGRES_VERSION:?Defina POSTGRES_VERSION en .env}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Defina POSTGRES_USER en .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Defina POSTGRES_PASSWORD en .env}
+      POSTGRES_DB: ${POSTGRES_DB:?Defina POSTGRES_DB en .env}
+    ports:
+      - "${POSTGRES_PORT:?Defina POSTGRES_PORT en .env}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
