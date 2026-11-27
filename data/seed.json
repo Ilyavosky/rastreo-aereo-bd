@@ -1,0 +1,328 @@
+{
+  "drones": [
+    {
+      "name": "Ligero",
+      "battery_wh": 60,
+      "v_min": 3,
+      "v_max": 10,
+      "h_min": 15,
+      "h_max": 60,
+      "v_vertical": 2.5,
+      "p_base_w": 60,
+      "c_drag": 0.02,
+      "c_altitude_j_m": 25,
+      "active": true
+    },
+    {
+      "name": "Estándar",
+      "battery_wh": 100,
+      "v_min": 3,
+      "v_max": 12,
+      "h_min": 15,
+      "h_max": 80,
+      "v_vertical": 3.0,
+      "p_base_w": 90,
+      "c_drag": 0.024,
+      "c_altitude_j_m": 30,
+      "active": true
+    },
+    {
+      "name": "Largo alcance",
+      "battery_wh": 150,
+      "v_min": 4,
+      "v_max": 14,
+      "h_min": 20,
+      "h_max": 100,
+      "v_vertical": 3.5,
+      "p_base_w": 130,
+      "c_drag": 0.03,
+      "c_altitude_j_m": 40,
+      "active": true
+    }
+  ],
+  "cameras": [
+    {
+      "name": "Óptica 4K",
+      "modality": "optical",
+      "fov_deg": 84,
+      "n_px_width": 4000,
+      "power_w": 8,
+      "battery_wh": 20,
+      "max_range_m": 120,
+      "active": true
+    },
+    {
+      "name": "Óptica 2K",
+      "modality": "optical",
+      "fov_deg": 90,
+      "n_px_width": 2000,
+      "power_w": 6,
+      "battery_wh": 15,
+      "max_range_m": 100,
+      "active": true
+    },
+    {
+      "name": "Térmica 640",
+      "modality": "thermal",
+      "fov_deg": 45,
+      "n_px_width": 640,
+      "power_w": 5,
+      "battery_wh": 15,
+      "max_range_m": 80,
+      "active": true
+    }
+  ],
+  "persons": [
+    {
+      "name": "Adulto de pie",
+      "posture": "standing",
+      "critical_dim_m": 0.5,
+      "px_min_optical": 20,
+      "px_min_thermal": 8
+    },
+    {
+      "name": "Adulto tendido",
+      "posture": "lying",
+      "critical_dim_m": 0.45,
+      "px_min_optical": 24,
+      "px_min_thermal": 10
+    },
+    {
+      "name": "Niño",
+      "posture": "standing",
+      "critical_dim_m": 0.3,
+      "px_min_optical": 20,
+      "px_min_thermal": 8
+    }
+  ],
+  "scenario_templates": [
+    {
+      "slug": "sendero-de-montana",
+      "name": "Sendero de montaña",
+      "description": "Ladera con sendero, matorral, un núcleo de bosque denso y un risco prohibido.",
+      "config": {
+        "width_m": 1000,
+        "height_m": 1000,
+        "cell_size_m": 20,
+        "base": {
+          "x": 60,
+          "y": 60
+        },
+        "last_seen": {
+          "x": 620,
+          "y": 540
+        },
+        "vegetation_default": "brush",
+        "vegetation_zones": [
+          {
+            "type": "dense",
+            "x0": 300,
+            "y0": 400,
+            "x1": 700,
+            "y1": 800
+          },
+          {
+            "type": "open",
+            "x0": 0,
+            "y0": 0,
+            "x1": 250,
+            "y1": 250
+          }
+        ],
+        "forbidden_zones": [
+          {
+            "x0": 700,
+            "y0": 100,
+            "x1": 780,
+            "y1": 180
+          }
+        ],
+        "hills": [
+          {
+            "x": 500,
+            "y": 500,
+            "height_m": 80,
+            "sigma_m": 150
+          },
+          {
+            "x": 800,
+            "y": 300,
+            "height_m": 50,
+            "sigma_m": 120
+          }
+        ],
+        "paths": [
+          {
+            "kind": "trail",
+            "points": [
+              {
+                "x": 60,
+                "y": 60
+              },
+              {
+                "x": 250,
+                "y": 300
+              },
+              {
+                "x": 450,
+                "y": 520
+              },
+              {
+                "x": 620,
+                "y": 540
+              },
+              {
+                "x": 900,
+                "y": 800
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "valle-con-rio",
+      "name": "Valle con río",
+      "description": "Valle abierto con río, vegetación ribereña, bosque denso al sureste y un cable prohibido.",
+      "config": {
+        "width_m": 1000,
+        "height_m": 1000,
+        "cell_size_m": 20,
+        "base": {
+          "x": 80,
+          "y": 900
+        },
+        "last_seen": {
+          "x": 450,
+          "y": 520
+        },
+        "vegetation_default": "open",
+        "vegetation_zones": [
+          {
+            "type": "brush",
+            "x0": 0,
+            "y0": 380,
+            "x1": 1000,
+            "y1": 620
+          },
+          {
+            "type": "dense",
+            "x0": 700,
+            "y0": 650,
+            "x1": 1000,
+            "y1": 1000
+          }
+        ],
+        "forbidden_zones": [
+          {
+            "x0": 880,
+            "y0": 100,
+            "x1": 900,
+            "y1": 400
+          }
+        ],
+        "hills": [
+          {
+            "x": 200,
+            "y": 200,
+            "height_m": 60,
+            "sigma_m": 180
+          }
+        ],
+        "paths": [
+          {
+            "kind": "river",
+            "points": [
+              {
+                "x": 0,
+                "y": 500
+              },
+              {
+                "x": 300,
+                "y": 450
+              },
+              {
+                "x": 600,
+                "y": 550
+              },
+              {
+                "x": 1000,
+                "y": 500
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "bosque-denso",
+      "name": "Bosque denso",
+      "description": "Bosque cerrado con un claro central, matorral en el borde oeste y un barranco prohibido.",
+      "config": {
+        "width_m": 1000,
+        "height_m": 1000,
+        "cell_size_m": 20,
+        "base": {
+          "x": 50,
+          "y": 950
+        },
+        "last_seen": {
+          "x": 480,
+          "y": 480
+        },
+        "vegetation_default": "dense",
+        "vegetation_zones": [
+          {
+            "type": "open",
+            "x0": 400,
+            "y0": 400,
+            "x1": 560,
+            "y1": 560
+          },
+          {
+            "type": "brush",
+            "x0": 0,
+            "y0": 0,
+            "x1": 250,
+            "y1": 1000
+          }
+        ],
+        "forbidden_zones": [
+          {
+            "x0": 600,
+            "y0": 600,
+            "x1": 720,
+            "y1": 700
+          }
+        ],
+        "hills": [
+          {
+            "x": 700,
+            "y": 300,
+            "height_m": 100,
+            "sigma_m": 200
+          }
+        ],
+        "paths": [
+          {
+            "kind": "trail",
+            "points": [
+              {
+                "x": 50,
+                "y": 950
+              },
+              {
+                "x": 300,
+                "y": 700
+              },
+              {
+                "x": 480,
+                "y": 480
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
